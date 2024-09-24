@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const token = process.env.TELEGRAM_API;
-console.log(token);
+
 
 // Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(token, { polling: true });
@@ -19,6 +19,11 @@ app.get("/", (req, res) => {
 
 app.listen(port, () => {
   console.log(`🚀 Server is running at http://localhost:${port}`);
+});
+
+app.post('/webhook', (req, res) => {
+  bot.processUpdate(req.body); // Process incoming updates
+  res.sendStatus(200);          // Respond to Telegram with status 200 (OK)
 });
 
 bot.onText(/\/start/, (msg) => {
