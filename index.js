@@ -26,66 +26,78 @@ app.post('/webhook', (req, res) => {
   res.sendStatus(200);          // Respond to Telegram with status 200 (OK)
 });
 
+// Start command
 bot.onText(/\/start/, (msg) => {
   const chatId = msg.chat.id;
   bot.sendMessage(
     chatId,
-    `👋 Hi there, welcome to my Web Dev Portfolio Assistant! 
-I'm here to guide you through my projects, skills, and experience.
+    `👋 <b>Hi there, welcome to my Web Dev Portfolio Assistant!</b> 
+<i>I'm here to guide you through my projects, skills, and experience.</i>
 
-Here are some commands to get you started:
-- */projects*: Check out my completed projects.
-- */skills*: Explore the web technologies I'm proficient in.
-- */contact*: Find ways to get in touch with me.
-- */hireme*: Get my CV or schedule a meeting.
+<b>Here are some commands to get you started:</b>
+- <b>*/projects*</b>: Check out my completed projects.
+- <b>*/skills*</b>: Explore the web technologies I'm proficient in.
+- <b>*/contact*</b>: Find ways to get in touch with me.
+- <b>*/hireme*</b>: Get my CV or schedule a meeting.
 
-Type any command to begin or let me know how I can assist you! 🚀`
+<b>Type any command to begin</b> or let me know how I can assist you! 🚀`,
+    { parse_mode: 'HTML' }
   );
 });
 
+// Projects command
 bot.onText(/\/projects/, (msg) => {
   bot.sendMessage(
     msg.chat.id,
-    `🚀 Here are some of my projects:
-  1. 🌐 Portfolio Website: [Link](https://debayanmukherjee.vercel.app/)
-  2. 🏋️ Gym Website: [Link](https://codeuxdebayan.github.io/FitGoals/)
-  3. 🎶 Music Studio Platform: [Link](https://codeuxdebayan.github.io/Datstudio/)`
+    `🚀 <b>Here are some of my projects:</b>
+  1. 🌐 <a href="https://debayanmukherjee.vercel.app/">Portfolio Website</a>
+  2. 🏋️ <a href="https://codeuxdebayan.github.io/FitGoals/">Gym Website</a>
+  3. 🎶 <a href="https://codeuxdebayan.github.io/Datstudio/">Music Studio Platform</a>`,
+    { parse_mode: 'HTML' }
   );
 });
 
+// Skills command
 bot.onText(/\/skills/, (msg) => {
   bot.sendMessage(
     msg.chat.id,
-    `💻 Here are the skills I specialize in:
-  - 🌟 HTML, CSS, JavaScript
-  - ⚛️ React, Node.js, Express
-  - 🗄️ MongoDB, SQL
-  - 🎨 Responsive Design, Web Animations`
+    `💻 <b>Here are the skills I specialize in:</b>
+  - 🌟 <b>HTML, CSS, JavaScript</b>
+  - ⚛️ <b>React, Node.js, Express</b>
+  - 🗄️ <b>MongoDB, SQL</b>
+  - 🎨 <b>Responsive Design, Web Animations</b>`,
+    { parse_mode: 'HTML' }
   );
 });
 
+// Contact command
 bot.onText(/\/contact/, (msg) => {
   bot.sendMessage(
     msg.chat.id,
-    `📞 You can contact me via:
-  ✉️ Email: astrodebayan.18@gmail.com
-  🔗 LinkedIn: [Profile](https://www.linkedin.com/in/debayan-mukherjee-web3090/)
-  🐙 GitHub: [Profile](https://github.com/CodeUxDebayan)`
+    `📞 <b>You can contact me via:</b>
+  ✉️ <b>Email:</b> <a href="mailto:astrodebayan.18@gmail.com">astrodebayan.18@gmail.com</a>
+  🔗 <b>LinkedIn:</b> <a href="https://www.linkedin.com/in/debayan-mukherjee-web3090/">LinkedIn Profile</a>
+  🐙 <b>GitHub:</b> <a href="https://github.com/CodeUxDebayan">GitHub Profile</a>`,
+    { parse_mode: 'HTML' }
   );
 });
 
+// Hire me command
 bot.onText(/\/hireme/, (msg) => {
   const chatId = msg.chat.id;
 
   // Sending the CV link
   bot.sendMessage(
     chatId,
-    `📄 Here's a link to my CV: [Download CV](https://debayanmukherjee.vercel.app/files/2024%20Cv.pdf)`
+    `📄 <b>Here's a link to my CV:</b> <a href="https://debayanmukherjee.vercel.app/files/2024%20Cv.pdf">Download CV</a>`,
+    { parse_mode: 'HTML' }
   );
 
   // Prompting the user to schedule a meeting
   bot.sendMessage(
     chatId,
-    `📅 If you're interested in scheduling a meeting, feel free to reach out to me via email `
+    `📅 <b>If you're interested in scheduling a meeting, feel free to reach out to me via email.</b>`,
+    { parse_mode: 'HTML' }
   );
 });
+
